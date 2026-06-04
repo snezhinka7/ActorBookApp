@@ -1,7 +1,12 @@
 ﻿using System.Text;
 using ActorBookApp.Models;
+using ActorBookApp;
+using ActorBookApp.Interfaces;
+using System.Collections.Generic;
 
 Console.WriteLine("Bienvenido al ActorBook!");
+
+var imprimirInfo = new ImprimirInfo();
 
 var pelicula1 = new PeliculaEstelar();
 pelicula1.Nombre = "The Dark Night";
@@ -34,6 +39,8 @@ string resultadoActuacionChris = person1.Actuar();
 Console.WriteLine(resultadoActuacionChris);
 string resultadoLeerGuionChris = person1.LeerGuion();
 Console.WriteLine(resultadoLeerGuionChris);
+imprimirInfo.ImprimirActor(person1);
+
 
 var person2 = new ActorDoblaje();
 person2.Id = 2;
@@ -47,6 +54,10 @@ string resultadoPeliculasAntonio = person2.UsarPeliculas();
 Console.WriteLine(resultadoPeliculasAntonio);
 string resultadoDoblajeAntonio = person2.IdiomaDoblaje("español");
 Console.WriteLine(resultadoDoblajeAntonio);
+imprimirInfo.ImprimirActor(person2);
+
+((IActorCine)person1).MensajeFinalizacion();
+
 
 enum NivelAlcance
 {

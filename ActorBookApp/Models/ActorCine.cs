@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ActorBookApp.Interfaces;
 
 namespace ActorBookApp.Models
 {
-    class ActorCine : Actor
+    class ActorCine : Actor, IActorCine
     {
-        public int Id;
+        public int Id { get; set; } = 1;
         private string _Nombre;
         
         public override string Nombre
@@ -23,9 +24,8 @@ namespace ActorBookApp.Models
             get { return _Apellido; }
             set { _Apellido = value.Trim(); }
         }
-        public bool Oscar;
-        public List<PeliculaEstelar> Peliculas;
-
+        public bool Oscar { get; set; }
+        public List<PeliculaEstelar> Peliculas { get; set; }
         public ActorCine()
         {
             Id = 1;
