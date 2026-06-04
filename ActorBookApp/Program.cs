@@ -18,7 +18,7 @@ pelicula3.Nombre = "Gato con Botas";
 pelicula3.Descripcion = "un gato que lleva botas y pelea";
 pelicula3.Nivel = NivelAlcance.Internacional;
 
-var person1 = new Actor();
+var person1 = new ActorCine();
 
 person1.Id = 1;
 person1.Nombre = "Christian";
@@ -28,9 +28,12 @@ List<PeliculaEstelar> peliculasChristian = new List<PeliculaEstelar>();
 peliculasChristian.Add(pelicula1);
 peliculasChristian.Add(pelicula2);
 person1.Peliculas = peliculasChristian;
-
 string resultadoPeliculasChris = person1.UsarPeliculas();
 Console.WriteLine(resultadoPeliculasChris);
+string resultadoActuacionChris = person1.Actuar();
+Console.WriteLine(resultadoActuacionChris);
+string resultadoLeerGuionChris = person1.LeerGuion();
+Console.WriteLine(resultadoLeerGuionChris);
 
 var person2 = new ActorDoblaje();
 person2.Id = 2;

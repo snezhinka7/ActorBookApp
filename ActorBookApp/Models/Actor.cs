@@ -4,39 +4,12 @@ using System.Text;
 
 namespace ActorBookApp.Models
 {
-    class Actor
+    internal abstract class Actor
     {
-        public int Id;
-        private string _Nombre;
+        public abstract string Nombre { get; set; }
+        public abstract string Apellido { get; set; }
         
-        public string Nombre
-        {
-            get { return _Nombre; }
-            set { _Nombre = value.Trim(); }
-        }
-
-        public string NombreYApellido { get { return $"{Nombre} {Apellido}"; } }
-
-        public string Apellido;
-        public bool Oscar;
-        public List<PeliculaEstelar> Peliculas;
-
-        public Actor()
-        {
-            Id = 1;
-            Peliculas = new List<PeliculaEstelar>();
-            Oscar = false;
-        }
-
-        public string UsarPeliculas()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (var pelicula in Peliculas)
-            {
-                sb.AppendLine($"El actor {NombreYApellido} participo en la pelicula '{pelicula.Nombre}'");
-            }
-            return sb.ToString();
-        }
+        public abstract string Actuar();
+        public virtual string LeerGuion() { return $"{Nombre} está leyendo el guion"; }
     }
-
 }
