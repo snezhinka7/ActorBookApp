@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using ActorBookApp.Models;
 
 Console.WriteLine("Bienvenido al ActorBook!");
 
@@ -12,59 +13,37 @@ pelicula2.Nombre = "Inception";
 pelicula2.Descripcion = "Un ladrón que roba secretos a través de los sueños";
 pelicula2.Nivel = NivelAlcance.Nacional;
 
+var pelicula3 = new PeliculaEstelar();
+pelicula3.Nombre = "Gato con Botas";
+pelicula3.Descripcion = "un gato que lleva botas y pelea";
+pelicula3.Nivel = NivelAlcance.Internacional;
+
 var person1 = new Actor();
 
 person1.Id = 1;
-person1.Nombre = "Christian Bale";
+person1.Nombre = "Christian";
+person1.Apellido = "Bale";
 person1.Oscar = true;
-List<PeliculaEstelar> peliculas = new List<PeliculaEstelar>();
-peliculas.Add(pelicula1);
-peliculas.Add(pelicula2);
-person1.Peliculas = peliculas;
+List<PeliculaEstelar> peliculasChristian = new List<PeliculaEstelar>();
+peliculasChristian.Add(pelicula1);
+peliculasChristian.Add(pelicula2);
+person1.Peliculas = peliculasChristian;
 
-string resultadoPeliculas = person1.UsarPeliculas();
-Console.WriteLine(resultadoPeliculas);
+string resultadoPeliculasChris = person1.UsarPeliculas();
+Console.WriteLine(resultadoPeliculasChris);
 
-
-
-class Actor
-{
-    public int Id;
-    public string Nombre;
-    public bool Oscar;
-    public List<PeliculaEstelar> Peliculas;
-
-    public Actor()
-    {
-        Id = 1;
-        Peliculas = new List<PeliculaEstelar>();
-        Oscar = false;
-    }
-
-    public string UsarPeliculas()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var pelicula in Peliculas)
-        {
-            sb.AppendLine($"El actor {Nombre} participo en la pelicula '{pelicula.Nombre}'");
-        }
-        return sb.ToString();
-    }
-}
-
-class PeliculaEstelar
-{
-    public string Nombre;
-    public string Descripcion;
-    public NivelAlcance Nivel;
-
-    public PeliculaEstelar()
-    {
-        Nombre = string.Empty;
-        Descripcion = string.Empty;
-        Nivel = NivelAlcance.Local;
-    }
-}
+var person2 = new ActorDoblaje();
+person2.Id = 2;
+person2.Nombre = "Antonio";
+person2.Apellido = "Banderas";
+person2.Oscar = false;
+List<PeliculaEstelar> peliculasAntonio = new List<PeliculaEstelar>();
+peliculasAntonio.Add(pelicula3);
+person2.Peliculas = peliculasAntonio;
+string resultadoPeliculasAntonio = person2.UsarPeliculas();
+Console.WriteLine(resultadoPeliculasAntonio);
+string resultadoDoblajeAntonio = person2.IdiomaDoblaje("español");
+Console.WriteLine(resultadoDoblajeAntonio);
 
 enum NivelAlcance
 {
